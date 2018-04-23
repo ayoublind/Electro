@@ -60,10 +60,10 @@ class Panier(models.Model):
 
     id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
     id_user = models.ForeignKey(User, on_delete=models.CASCADE)
-    qte = models.IntegerField(default=1)
+    qte = models.IntegerField()
 
     def __str__(self):
-        return self.id_product + '-' + self.qte
+        return self.qte
 
 class Facture(models.Model):
 
@@ -73,7 +73,7 @@ class Facture(models.Model):
     checked = models.BooleanField(default=False)
 
     def __str__(self):
-         return self.id_user + '-' + self.total
+         return self.total
 
 class Commande(models.Model):
     nb_prod = models.IntegerField(default=0)
@@ -81,7 +81,7 @@ class Commande(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.id + '-' + self.user + '-' + self.total
+        return self.total
 
 
 #la classe review pour presenter les observations des utilisateurs sur chaque produit
