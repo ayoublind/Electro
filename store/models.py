@@ -21,6 +21,7 @@ class SousCategorie(models.Model):
 
 #
 class Product(models.Model):
+
     name = models.CharField(max_length=50, default='')
     date = models.DateField('date published', default='none')
     offer = models.BooleanField(default=False)
@@ -32,13 +33,13 @@ class Product(models.Model):
     # SET_DEFAULT si une categorie a été suprimée dans la table 'Categorie', les produits de cette catégorie 
     # ne seront pas suprimé et la valeur du leurs champ categorie sera 'none'
     categorie =  models.ForeignKey(Categorie, on_delete=models.CASCADE)
- 
+
     def __str__(self):
         return "produit"
 
 class Image(models.Model):
     url = models.CharField(max_length=50, default='')
-    prod =  models.ForeignKey(Product, on_delete=models.CASCADE)
+    prod = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.url
@@ -56,16 +57,31 @@ class User(models.Model):
         return self.username
 
 class Panier(models.Model):
+
+    id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    qte = models.IntegerField(default=1)
+
     def __str__(self):
-        return "Panier"
+        return self.id_product + '-' + self.qte
 
 class Facture(models.Model):
+
+    id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    total = models.FloatField()
+    checked = models.BooleanField(default=False)
+
     def __str__(self):
-        return "Facture"
+         return self.id_user + '-' + self.total
 
 class Commande(models.Model):
+    nb_prod = models.IntegerField(default=0)
+    total = models.FloatField(default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     def __str__(self):
-        return "commande"
+        return self.id + '-' + self.user + '-' + self.total
 
 
 #la classe review pour presenter les observations des utilisateurs sur chaque produit
