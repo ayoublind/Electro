@@ -4,37 +4,53 @@ import datetime
 from django.utils import timezone
 # Create your models here.
 
+# la classe categorie 
+class Categorie(models.Model):
+    designation = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.designation
+        
+#
+class SousCategorie(models.Model):
+    cat = models.ForeignKey(Categorie, on_delete=models.CASCADE)
+    designation = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.designation
+
+#
 class Product(models.Model):
-    name = models.CharField(max_length=50)
-    date = models.DateField('added date')
-    offer = models.BooleanField()
-    pourcentage = models.IntegerField()
-    stock = models.IntegerField()
-    description = models.TextField()
-    prix = models.FloatField()
-    prix_old = models.FloatField()
+    name = models.CharField(max_length=50, default='')
+    date = models.DateField('date published', default='none')
+    offer = models.BooleanField(default=False)
+    pourcentage = models.IntegerField(default=0)
+    stock = models.IntegerField(default=0)
+    description = models.TextField(default='')
+    prix = models.FloatField(default=0.0)
+    prix_old = models.FloatField(default=0.0)
     # SET_DEFAULT si une categorie a été suprimée dans la table 'Categorie', les produits de cette catégorie 
     # ne seront pas suprimé et la valeur du leurs champ categorie sera 'none'
-    categorie =  models.ForeignKey('Categorie', on_delete=models.SET_DEFAULT, default='none')
+    categorie =  models.ForeignKey(Categorie, on_delete=models.CASCADE)
  
     def __str__(self):
         return "produit"
 
 class Image(models.Model):
-    url = models.CharField(max_length=50)
-    prod =  models.ForeignKey('Product', on_delete=models.CASCADE)
+    url = models.CharField(max_length=50, default='')
+    prod =  models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.url
 
 
 class User(models.Model):
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
-    firstname = models.CharField(max_length=50)
-    lastname = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
-    tel = models.CharField(max_length=50)
+    username = models.CharField(max_length=50, default='')
+    password = models.CharField(max_length=50, default='')
+    firstname = models.CharField(max_length=50, default='')
+    lastname = models.CharField(max_length=50, default='')
+    email = models.CharField(max_length=50, default='')
+    tel = models.CharField(max_length=50, default='')
 
     def __str__(self):
         return self.username
@@ -51,20 +67,6 @@ class Commande(models.Model):
     def __str__(self):
         return "commande"
 
-# la classe categorie 
-class Categorie(models.Model):
-    designation = models.CharField(max_length=200)
-    
-    def __str__(self):
-        return self.designation
-        
-#
-class SousCategorie(models.Model):
-    cat = models.ForeignKey(Categorie, on_delete=models.CASCADE)
-    designation = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.designation
 
 #la classe review pour presenter les observations des utilisateurs sur chaque produit
 class Review(models.Model):
