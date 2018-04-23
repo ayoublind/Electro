@@ -5,16 +5,39 @@ from django.utils import timezone
 # Create your models here.
 
 class Product(models.Model):
+    name = models.CharField(max_length=50)
+    date = models.DateField('added date')
+    offer = models.BooleanField()
+    pourcentage = models.IntegerField()
+    stock = models.IntegerField()
+    description = models.TextField()
+    prix = models.FloatField()
+    prix_old = models.FloatField()
+    # SET_DEFAULT si une categorie a été suprimée dans la table 'Categorie', les produits de cette catégorie 
+    # ne seront pas suprimé et la valeur du leurs champ categorie sera 'none'
+    categorie =  models.ForeignKey('Categorie', on_delete=models.SET_DEFAULT, default='none')
+ 
     def __str__(self):
         return "produit"
 
 class Image(models.Model):
+    url = models.CharField(max_length=50)
+    prod =  models.ForeignKey('Product', on_delete=models.CASCADE)
+
     def __str__(self):
-        return "Image"
+        return self.url
+
 
 class User(models.Model):
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+    firstname = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    tel = models.CharField(max_length=50)
+
     def __str__(self):
-        return "User"
+        return self.username
 
 class Panier(models.Model):
     def __str__(self):
