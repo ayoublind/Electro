@@ -1,3 +1,5 @@
+
+
 """Electro URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -26,6 +28,18 @@ urlpatterns = [
     path('products/',include('store.urls')),
     #shop
     path('shop/',views.shop),
+    #blog
+    path('blog/',views.blog),
+    #cart
+    path('cart/',views.cart),
+    #contact
+    path('contact/',views.contact),
+    #regular
+    path('regular/', views.regular),
+    #sign in
+    path('sign_in/',views.sign_in),
+    #register
+    path('register/', views.register),
     #administrator page
     path('admin/', admin.site.urls),
 ]
