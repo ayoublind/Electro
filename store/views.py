@@ -11,7 +11,10 @@ from .models import Product
 
 
 def index(request):
-    return render(request, 'index.html')
+    featured_product_list = Product.objects.order_by('-pourcentage')[:5]
+    latest_product_list = Product.objects.order_by('-date')[:10]
+    context = {'featured_product_list' : featured_product_list, 'latest_product_list' : latest_product_list}
+    return render(request, 'index.html',context)
 
 def product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)

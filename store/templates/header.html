@@ -1,16 +1,30 @@
-
 {% load staticfiles %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Electro</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Elctro shop project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href='{% static "/styles/bootstrap4/bootstrap.min.css" %}'>
+	<link href='{% static "/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" %}' rel="stylesheet" type="text/css">
+	
+	<link rel="stylesheet" type="text/css" href='{% static "/plugins/OwlCarousel2-2.2.1/owl.carousel.css" %}'>
+	<link rel="stylesheet" type="text/css" href='{% static "/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" %}'>
+	<link rel="stylesheet" type="text/css" href='{% static "/plugins/OwlCarousel2-2.2.1/animate.css" %}'>
+	<link rel="stylesheet" type="text/css" href='{% static "/plugins/slick-1.8.0/slick.css" %}'>
+	<link rel="stylesheet" type="text/css" href='{% static "/styles/main_styles.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "/styles/responsive.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "/plugins/jquery-ui-1.12.1.custom/jquery-ui.css" %}'>
 </head>
 
 <body>
-
 <div class="super_container">
-	
 	<!-- Header -->
-	
 	<header class="header">
-
 		<!-- Top Bar -->
 
 		<div class="top_bar">
@@ -28,26 +42,6 @@
 							</div>
 							<a href="mailto:electro@gmail.com">electro@gmail.com</a></div>
 						<div class="top_bar_content ml-auto">
-						<!-- 
-							<div class="top_bar_menu">
-								<ul class="standard_dropdown top_bar_dropdown">
-									<li>
-										<a href="#">Francais<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">English</a></li>
-											<li><a href="#">Spanish</a></li>
-										</ul>
-									</li>
-									<li>
-										<a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">EUR</a></li>
-											<li><a href="#">MAD</a></li>
-										</ul>
-									</li>
-								</ul>
-							</div> 
-						-->
 							<div class="top_bar_user">
 								<div class="user_icon"><img src='{% static "/images/user.svg" %}' alt=""></div>
 								<div><a href="/register">Register</a></div>
@@ -107,7 +101,7 @@
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
+							<!--<div class="wishlist d-flex flex-row align-items-center justify-content-end">
 								<div class="wishlist_icon"><img src='{% static "/images/heart.png" %}' alt=""></div>
 								<div class="wishlist_content">
 									<div class="wishlist_text">
@@ -115,7 +109,7 @@
 									</div>
 									<div class="wishlist_count">115</div>
 								</div>
-							</div>
+							</div>-->
 
 							<!-- Cart -->
 							<div class="cart">
@@ -135,6 +129,7 @@
 				</div>
 			</div>
 		</div>
+
 		<!-- Main Navigation -->
 
 		<nav class="main_nav">
@@ -154,8 +149,9 @@
 	
 									<ul class="cat_menu">
 										<li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
+										<li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
 										<li class="hassubs">
-											<a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a>
+											<a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
 											<ul>
 												<li class="hassubs">
 													<a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
@@ -171,9 +167,12 @@
 												<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
 											</ul>
 										</li>
-										<li><a href="#">Video Games<i class="fas fa-chevron-right"></i></a></li>
+										<li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
 										<li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
+										<li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
 										<li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
+										<li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
+										<li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
 									</ul>
 								</div>
 	
@@ -181,7 +180,7 @@
 	
 								<div class="main_nav_menu ml-auto">
 									<ul class="standard_dropdown main_nav_dropdown">
-										<li><a href="/">Home<i class="fas fa-chevron-down"></i></a></li>
+										<li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
 										<li class="hassubs">
 											<a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
 											<ul>
@@ -218,8 +217,9 @@
 											<a href="#">Pages<i class="fas fa-chevron-down"></i></a>
 											<ul>
 												<li><a href="/shop">Shop<i class="fas fa-chevron-down"></i></a></li>
-												<li><a href="/products">Products<i class="fas fa-chevron-down"></i></a></li>
+												<li><a href="/product">Product<i class="fas fa-chevron-down"></i></a></li>
 												<li><a href="/blog">Blog<i class="fas fa-chevron-down"></i></a></li>
+												<li><a href="/blog_single">Blog Post<i class="fas fa-chevron-down"></i></a></li>
 												<li><a href="/regular">Regular Post<i class="fas fa-chevron-down"></i></a></li>
 												<li><a href="/cart">Cart<i class="fas fa-chevron-down"></i></a></li>
 												<li><a href="/contact">Contact<i class="fas fa-chevron-down"></i></a></li>
@@ -227,8 +227,6 @@
 										</li>
 										<li><a href="/blog">Blog<i class="fas fa-chevron-down"></i></a></li>
 										<li><a href="/contact">Contact<i class="fas fa-chevron-down"></i></a></li>
-										<li><a href="/about">About Us<i class="fas fa-chevron-down"></i></a></li>
-
 									</ul>
 								</div>
 	
@@ -264,7 +262,7 @@
 									</form>
 								</div>
 								<ul class="page_menu_nav">
-						<!-- 		<li class="page_menu_item has-children">
+									<li class="page_menu_item has-children">
 										<a href="#">Language<i class="fa fa-angle-down"></i></a>
 										<ul class="page_menu_selection">
 											<li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
@@ -282,9 +280,8 @@
 											<li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
 										</ul>
 									</li>
-							-->
 									<li class="page_menu_item">
-										<a href="/">Home<i class="fa fa-angle-down"></i></a>
+										<a href="#">Home<i class="fa fa-angle-down"></i></a>
 									</li>
 									<li class="page_menu_item has-children">
 										<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
@@ -322,25 +319,18 @@
 											<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
 										</ul>
 									</li>
-									<li class="page_menu_item"><a href="/blog">blog<i class="fa fa-angle-down"></i></a></li>
-									<li class="page_menu_item"><a href="/contact">contact<i class="fa fa-angle-down"></i></a></li>
+									<li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
+									<li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
 								</ul>
 								
 								<div class="menu_contact">
-									<div class="menu_contact_item">
-										<div class="menu_contact_icon">
-											<img src='{% static "/images/phone_white.png" %}' alt="">
-										</div>
-										+38 068 005 3570
-									</div>
-									<div class="menu_contact_item"><div class="menu_contact_icon">
-										<img src='{% static "/images/mail_white.png" %}' alt=""></div>
-										<a href="mailto:electro@gmail.com">electro@gmail.com</a></div>
+									<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
+									<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>	
 	
 		</header>
