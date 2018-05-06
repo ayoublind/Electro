@@ -22,7 +22,7 @@ class SousCategorie(models.Model):
 
 #
 class Product(models.Model):
-
+    orders = models.IntegerField(default=0)
     name = models.CharField(max_length=50, default='')
     date = models.DateField('date published', default='none')
     offer = models.BooleanField(default=False)
