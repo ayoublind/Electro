@@ -80,12 +80,10 @@
 												<span class="custom_dropdown_placeholder clc">All Categories</span>
 												<i class="fas fa-chevron-down"></i>
 												<ul class="custom_list clc">
-													<li><a class="clc" href="#">All Categories</a></li>
-													<li><a class="clc" href="#">Computers & Laptops</a></li>
-													<li><a class="clc" href="#">Smartphones & Tablets</a></li>
-													<li><a class="clc" href="#">TV & Audio </a></li>
-													<li><a class="clc" href="#">Video Games</a></li>
-													<li><a class="clc" href="#">Car Electronics</a></li>
+													<li><a class="clc" href="/">All Categories</a></li>
+													{% for cat in categories %}
+														<li><a class="clc" href="#">{{cat.designation}}</a></li>
+													{% endfor %}
 												</ul>
 											</div>
 										</div>
@@ -148,9 +146,8 @@
 									</div>
 	
 									<ul class="cat_menu">
-										<li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-										<li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
-										<li class="hassubs">
+										
+										<!--<li class="hassubs">
 											<a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
 											<ul>
 												<li class="hassubs">
@@ -166,13 +163,14 @@
 												<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
 												<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
 											</ul>
-										</li>
-										<li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
-										<li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
-										<li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-										<li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-										<li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
-										<li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
+										</li>-->
+										{% for c in categories %}
+											<li>
+												<a href="#">{{c.designation}}
+													<i class="fas fa-chevron-right"></i>
+												</a>
+											</li>
+										{% endfor %}
 									</ul>
 								</div>
 	
@@ -227,6 +225,7 @@
 										</li>
 										<li><a href="/blog">Blog<i class="fas fa-chevron-down"></i></a></li>
 										<li><a href="/contact">Contact<i class="fas fa-chevron-down"></i></a></li>
+										<li><a href="/about">About Us<i class="fas fa-chevron-down"></i></a></li>
 									</ul>
 								</div>
 	
@@ -313,19 +312,34 @@
 									<li class="page_menu_item has-children">
 										<a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
 										<ul class="page_menu_selection">
-											<li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
+											<li>
+												<a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
+											</li>
 											<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
 											<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
 											<li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
 										</ul>
 									</li>
-									<li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
-									<li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
+									<li class="page_menu_item">
+										<a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
+									</li>
+									<li class="page_menu_item">
+										<a href="contact.html">contact<i class="fa fa-angle-down"></i></a>
+									</li>
 								</ul>
 								
 								<div class="menu_contact">
-									<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-									<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+									<div class="menu_contact_item">
+										<div class="menu_contact_icon">
+											<img src='{% static "/images/phone_white.png" %}' alt="">
+										</div>+38 068 005 3570
+									</div>
+									<div class="menu_contact_item">
+										<div class="menu_contact_icon">
+											<img src='{% static "/images/mail_white.png" %}' alt="">
+										</div>
+										<a href="mailto:electro@gmail.com">fastsales@gmail.com</a>
+									</div>
 								</div>
 							</div>
 						</div>
