@@ -40,6 +40,13 @@ urlpatterns = [
     path('sign_in/',views.sign_in),
     #register
     path('register/', views.register),
+    #wishlist
+    path('wishlist/', views.wishlist),
+    #about us
+    path('about/', views.about),
+
+     # ex: /categorie/1/
+    path('categorie/<int:categorie_id>/', views.categorie),
     #administrator page
     path('admin/', admin.site.urls),
 ]

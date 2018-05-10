@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404
 
 from django.http import HttpResponse
 
-from .models import Product, Categorie
+from .models import Product, Categorie, Image
+
+from django.db.models import Count
 
 # Create your views here.
 
@@ -11,14 +13,23 @@ def index(request):
     latest_product_list = Product.objects.order_by('-date')[:10]
     orders_product_list = Product.objects.order_by('-orders')[:10]
 
+    #images_list = Image.objects.values('url').annotate(dcount=Count('url'))
+    images_list = Image.objects.all()
+
     context = {'featured_product_list' : featured_product_list
                 , 'latest_product_list' : latest_product_list
-                ,'orders_product_list' : orders_product_list}
+                ,'orders_product_list' : orders_product_list
+                ,'images':images_list}
     return render(request, 'index.html',context)
 
 def product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     return render(request, 'products/product.html', {'product':product})
+
+#page charger for categorie
+def categorie(request, categorie_id):
+    categorie = get_object_or_404(Categorie, pk=categorie_id)
+    return render(request, 'categorie.html', {'categorie':categorie})
 
 def shop(request):
     return render(request, 'shop.html')
@@ -40,3 +51,12 @@ def sign_in(request):
 
 def register(request):
 	return render(request,'register.html')
+
+
+#wishlist fonction
+def wishlist(request):
+    return render(request, 'wishlist.html')
+
+#about us
+def about(request):
+    return render(request, 'about.html')

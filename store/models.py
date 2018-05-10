@@ -39,11 +39,12 @@ class Product(models.Model):
         return "produit"
 
 class Image(models.Model):
-    url = models.CharField(max_length=50, default='')
+    #url = models.CharField(max_length=50, default='')
+    url = models.ImageField(upload_to = 'image_folder/', default = 'image/no_image_available.jpg')
     prod = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.url
+        return self.url.url
 
 
 class User(models.Model):
@@ -98,3 +99,12 @@ class Review(models.Model):
     #on veut afficher que la note lors de l'appele de la methode tostring(affichage)
     def __str__(self):
         return self.note
+
+#Brand table (la marque)
+class Marque(models.Model):
+    name = models.CharField(max_length=100)
+    informations = models.CharField(max_length=800)
+    logo = models.ImageField(upload_to = 'marques/', default = 'marques/no_image_available.jpg')
+
+    def __str__(self):
+        return self.logo.url

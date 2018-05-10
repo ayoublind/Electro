@@ -234,6 +234,7 @@
 								<div class="featured_slider slider">
 
 									{% for product in featured_product_list %}
+										{% regroup images by product as images_list %}
 										<!-- Slider Item -->
 										<div class="featured_slider_item">
 											<div class="border_active"></div>
@@ -273,6 +274,7 @@
 								<div class="featured_slider_dots_cover"></div>
 							</div>
 
+					
 							<!-- New Products Panel -->
 
 							<div class="product_panel panel">
@@ -715,47 +717,15 @@
 						<!-- Brands Slider -->
 
 						<div class="owl-carousel owl-theme brands_slider">
-							
+							{% for marque in marques %}
 							<div class="owl-item">
 								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src='{% static "/images/brands_1.jpg" %}' alt="">
+									<!--<img src='{% static "/images/'{{marque.logo.url}}'" %}' alt="{{ marque.name }}">
+									<img src='{% static "/images/brands_2.jpg" %}' alt="{{ marque.name }}">-->
+									<h3>{{marque.name}}</h3>
 								</div>
 							</div>
-							<div class="owl-item">
-								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src='{% static "/images/brands_2.jpg" %}' alt="">
-								</div>
-							</div>
-							<div class="owl-item">
-								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src='{% static "/images/brands_3.jpg" %}' alt="">
-								</div>
-							</div>
-							<div class="owl-item">
-								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src='{% static "/images/brands_4.jpg" %}' alt="">
-								</div>
-							</div>
-							<div class="owl-item">
-								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src='{% static "/images/brands_5.jpg" %}' alt="">
-								</div>
-							</div>
-							<div class="owl-item">
-								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src='{% static "/images/brands_6.jpg" %}' alt="">
-								</div>
-							</div>
-							<div class="owl-item">
-								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src='{% static "/images/brands_7.jpg" %}' alt="">
-								</div>
-							</div>
-							<div class="owl-item">
-								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src='{% static "/images/brands_8.jpg" %}' alt="">
-								</div>
-							</div>
+							{% endfor %}
 
 						</div>
 						
@@ -844,3 +814,4 @@
 
 	<!-- Footer -->
 	{% include "footer.html" %}
+	

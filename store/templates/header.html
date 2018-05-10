@@ -82,7 +82,7 @@
 												<ul class="custom_list clc">
 													<li><a class="clc" href="/">All Categories</a></li>
 													{% for cat in categories %}
-														<li><a class="clc" href="#">{{cat.designation}}</a></li>
+														<li><a class="clc" href="">{{cat.designation}}</a></li>
 													{% endfor %}
 												</ul>
 											</div>
@@ -99,15 +99,15 @@
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-							<!--<div class="wishlist d-flex flex-row align-items-center justify-content-end">
+							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
 								<div class="wishlist_icon"><img src='{% static "/images/heart.png" %}' alt=""></div>
 								<div class="wishlist_content">
 									<div class="wishlist_text">
-										<a href="#">Wishlist</a>
+										<a href="/wishlist">Wishlist</a>
 									</div>
 									<div class="wishlist_count">115</div>
 								</div>
-							</div>-->
+							</div>
 
 							<!-- Cart -->
 							<div class="cart">
@@ -166,7 +166,7 @@
 										</li>-->
 										{% for c in categories %}
 											<li>
-												<a href="#">{{c.designation}}
+												<a href="/categorie/{{c.id}}">{{c.designation}}
 													<i class="fas fa-chevron-right"></i>
 												</a>
 											</li>
