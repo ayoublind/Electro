@@ -43,6 +43,13 @@ urlpatterns = [
     path('login/', login , {'template_name': 'login.html'}),
     #register
     path('register/', views.register),
+    #wishlist
+    path('wishlist/', views.wishlist),
+    #about us
+    path('about/', views.about),
+
+     # ex: /categorie/1/
+    path('categorie/<int:categorie_id>/', views.categorie),
     #administrator page
     path('admin/', admin.site.urls),
 ]

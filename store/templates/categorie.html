@@ -1,0 +1,19 @@
+{% load staticfiles %}
+
+{% include "header.html" %}
+
+<!-- custmer css-->
+<link rel="stylesheet" type="text/css" href='{% static "/styles/blog_responsive.css" %}'>
+<link rel="stylesheet" type="text/css" href='{% static "/styles/blog_styles.css" %}'>
+
+<!-- page title-->
+
+<div class="home">
+    <div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/shop_background.jpg"></div>
+    <div class="home_overlay"></div>
+    <div class="home_content d-flex flex-column align-items-center justify-content-center">
+        <h2 class="home_title"> {{ categorie.designation }}</h2>
+    </div>
+</div>
+
+{% include "footer.html" %}
