@@ -22,12 +22,11 @@ from django.contrib.auth.views import login
 
 from store import views
 
-<<<<<<< HEAD
+
 #import
 from django.conf import settings
 from django.conf.urls.static import static
-=======
->>>>>>> 825fd0a7fa5a3f7b41877d471061330f01f74645
+
 
 urlpatterns = [
     #page principale de l'application

@@ -50,11 +50,11 @@ def regular(request):
 def register(request):
 	return render(request,'register.html')
 
-<<<<<<< HEAD
+
 def logoutPage(request):
     logout(request)
     return HttpResponseRedirect('/')
-=======
+
 
 #wishlist fonction
 def wishlist(request):
@@ -63,4 +63,4 @@ def wishlist(request):
 #about us
 def about(request):
     return render(request, 'about.html')
->>>>>>> 838bf55fa24e0597e0185f5db49f73f3d910137d
+
