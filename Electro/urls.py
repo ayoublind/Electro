@@ -18,12 +18,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from django.contrib.auth.views import login
 
 from store import views
 
+<<<<<<< HEAD
 #import
 from django.conf import settings
 from django.conf.urls.static import static
+=======
+>>>>>>> 825fd0a7fa5a3f7b41877d471061330f01f74645
 
 urlpatterns = [
     #page principale de l'application
@@ -40,8 +44,9 @@ urlpatterns = [
     path('contact/',views.contact),
     #regular
     path('regular/', views.regular),
-    #sign in
-    path('sign_in/',views.sign_in),
+    #login/logout
+    path('logout/', views.logoutPage),
+    path('login/', login , {'template_name': 'login.html'}),
     #register
     path('register/', views.register),
     #wishlist
