@@ -234,16 +234,19 @@
 								<div class="featured_slider slider">
 
 									{% for product in featured_product_list %}
-										{% regroup images by product as images_list %}
+										<!--{% regroup images by product as images_list %}-->
 										<!-- Slider Item -->
 										<div class="featured_slider_item">
 											<div class="border_active"></div>
 											<div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-												<div class="product_image d-flex flex-column align-items-center justify-content-center">
-													<a href="./products/{{ product.id }}/">
-														<img src='{% static "/images/featured_1.png" %}' alt="">
-													</a>
-												</div>
+												{% for image in images_list %}
+													<div class="product_image d-flex flex-column align-items-center justify-content-center">
+														<a href="./products/{{ product.id }}/">
+															<!--<img src='{% static "/images/featured_1.png" %}' alt="">-->
+															<img src="{{image.url.url}}" alt="">
+														</a>
+													</div>
+												{% endfor %}
 												<div class="product_content">
 													<div class="product_price discount">
 														${{ product.prix }}<span>${{ product.prix_old }}</span>
@@ -717,12 +720,12 @@
 						<!-- Brands Slider -->
 
 						<div class="owl-carousel owl-theme brands_slider">
-							{% for marque in marques %}
+							{% for m in marques %}
 							<div class="owl-item">
 								<div class="brands_item d-flex flex-column justify-content-center">
-									<!--<img src='{% static "/images/'{{marque.logo.url}}'" %}' alt="{{ marque.name }}">
-									<img src='{% static "/images/brands_2.jpg" %}' alt="{{ marque.name }}">-->
-									<h3>{{marque.name}}</h3>
+									<img src="{{m.logo.url}}" alt="{{ m.name }}">
+									<!--<img src='{% static "/images/brands_2.jpg" %}' alt="{{ m.name }}">
+									<h3>{{m.name}}</h3>-->
 								</div>
 							</div>
 							{% endfor %}

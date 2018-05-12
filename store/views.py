@@ -13,13 +13,12 @@ def index(request):
     latest_product_list = Product.objects.order_by('-date')[:10]
     orders_product_list = Product.objects.order_by('-orders')[:10]
 
-    #images_list = Image.objects.values('url').annotate(dcount=Count('url'))
-    images_list = Image.objects.all()
+    images_list = Image.objects.order_by('-url')
 
     context = {'featured_product_list' : featured_product_list
                 , 'latest_product_list' : latest_product_list
                 ,'orders_product_list' : orders_product_list
-                ,'images':images_list}
+                ,'images_list':images_list}
     return render(request, 'index.html',context)
 
 def product(request, product_id):

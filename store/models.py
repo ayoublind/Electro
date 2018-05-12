@@ -40,7 +40,7 @@ class Product(models.Model):
 
 class Image(models.Model):
     #url = models.CharField(max_length=50, default='')
-    url = models.ImageField(upload_to = 'image_folder/', default = 'image/no_image_available.jpg')
+    url = models.ImageField()
     prod = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -104,7 +104,7 @@ class Review(models.Model):
 class Marque(models.Model):
     name = models.CharField(max_length=100)
     informations = models.CharField(max_length=800)
-    logo = models.ImageField(upload_to = 'marques/', default = 'marques/no_image_available.jpg')
+    logo = models.ImageField()
 
     def __str__(self):
         return self.logo.url

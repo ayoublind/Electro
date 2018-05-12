@@ -21,6 +21,10 @@ from django.conf.urls import url
 
 from store import views
 
+#import
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     #page principale de l'application
     path('',views.index),
@@ -50,3 +54,8 @@ urlpatterns = [
     #administrator page
     path('admin/', admin.site.urls),
 ]
+
+
+#make it on debug mode
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
