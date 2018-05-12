@@ -42,11 +42,25 @@
 							</div>
 							<a href="mailto:electro@gmail.com">electro@gmail.com</a></div>
 						<div class="top_bar_content ml-auto">
+							
+
+							{% if user.is_anonymous %}
 							<div class="top_bar_user">
 								<div class="user_icon"><img src='{% static "/images/user.svg" %}' alt=""></div>
 								<div><a href="/register">Register</a></div>
-								<div><a href="/sign_in">Sign in</a></div>
+								<div><a href="/login">Sign in</a></div>
 							</div>
+						{% endif %}
+
+						{% if user.is_authenticated %}
+							<div class="top_bar_user">
+								<div class="user_icon"><img src='{% static "/images/user.svg" %}' alt=""></div>
+								<div><a href="#">{{user.username}}</a></div>
+								<div><a href="/logout">Logout</a></div>
+							</div>
+						{% endif %}
+
+
 						</div>
 					</div>
 				</div>

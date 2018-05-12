@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import Product, Categorie
+
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -35,8 +37,9 @@ def contact(request):
 def regular(request):
 	return render(request, 'regular.html')
 
-def sign_in(request):
-	return render(request, 'sign_in.html')
-
 def register(request):
 	return render(request,'register.html')
+
+def logoutPage(request):
+    logout(request)
+    return HttpResponseRedirect('/')
