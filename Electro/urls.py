@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from django.contrib.auth.views import login
+from django.contrib.auth.views import LoginView
 
 from store import views
 
@@ -45,7 +45,7 @@ urlpatterns = [
     path('regular/', views.regular),
     #login/logout
     path('logout/', views.logoutPage),
-    path('login/', login , {'template_name': 'login.html'}),
+    path('login/', LoginView.as_view(template_name='login.html')),
     #register
     path('register/', views.register),
     #wishlist
