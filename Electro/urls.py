@@ -53,8 +53,10 @@ urlpatterns = [
     #about us
     path('about/', views.about),
 
-     # ex: /categorie/1/
+    # ex: /categorie/1/
     path('categorie/<int:categorie_id>/', views.categorie),
+    # ex: /marques/1/ afficher la liste des produit par marques
+    path('marques/<int:marque_id>/', views.marques),
     #administrator page
     path('admin/', admin.site.urls),
 ]
