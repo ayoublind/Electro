@@ -234,19 +234,15 @@
 								<div class="featured_slider slider">
 
 									{% for product in featured_product_list %}
-										<!--{% regroup images by product as images_list %}-->
 										<!-- Slider Item -->
 										<div class="featured_slider_item">
 											<div class="border_active"></div>
 											<div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-												{% for image in images_list %}
-													<div class="product_image d-flex flex-column align-items-center justify-content-center">
-														<a href="./products/{{ product.id }}/">
-															<!--<img src='{% static "/images/featured_1.png" %}' alt="">-->
-															<img src="{{image.url.url}}" alt="">
-														</a>
-													</div>
-												{% endfor %}
+												<div class="product_image d-flex flex-column align-items-center justify-content-center">
+													<a href="./products/{{ product.id }}/">
+														<img src="{{ product.images.first.url.url }}" alt="">
+													</a>
+												</div>
 												<div class="product_content">
 													<div class="product_price discount">
 														${{ product.prix }}<span>${{ product.prix_old }}</span>
@@ -288,13 +284,15 @@
 											<div class="border_active"></div>
 											<div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
 												<div class="product_image d-flex flex-column align-items-center justify-content-center">
-													<img src='{% static "/images/featured_1.png" %}' alt="">
+													<a href="./products/{{ newp.id }}/">
+														<img src="{{ newp.images.first.url.url }}" alt="">
+													</a>
 												</div>
 												<div class="product_content">
 													<div class="product_price discount">${{newp.prix}}<span>${{newp.prix_old}}</span></div>
 													<div class="product_name">
 														<div>
-															<a href="./product/{{newp.id}}/">{{newp.name}}</a>
+															<a href="./products/{{newp.id}}/">{{newp.name}}</a>
 														</div>
 													</div>
 													<div class="product_extras">
@@ -329,15 +327,15 @@
 										<div class="border_active"></div>
 										<div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
 											<div class="product_image d-flex flex-column align-items-center justify-content-center">
-												<a href="./product/{{order.id}}">
-													<img src='{% static "/images/featured_1.png" %}' alt="">
+												<a href="./products/{{order.id}}/">
+													<img src="{{ order.images.first.url.url }}" alt="">
 												</a>
 											</div>
 											<div class="product_content">
 												<div class="product_price discount">${{order.prix}}<span>${{order.prix_old}}</span></div>
 												<div class="product_name">
 													<div>
-														<a href="./product/{{order.id}}">{{order.product_name}}</a>
+														<a href="./products/{{order.id}}/">{{order.name}}</a>
 													</div></div>
 												<div class="product_extras">
 													<div class="product_color">

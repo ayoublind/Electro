@@ -36,12 +36,12 @@ class Product(models.Model):
     categorie =  models.ForeignKey(Categorie, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "produit"
+        return self.name
 
 class Image(models.Model):
     #url = models.CharField(max_length=50, default='')
     url = models.ImageField()
-    prod = models.ForeignKey(Product, on_delete=models.CASCADE)
+    prod = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
 
     def __str__(self):
         return self.url.url
