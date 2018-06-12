@@ -115,27 +115,6 @@
 			</div>
 		</div>
 	</div>
-	
-	
-
-	<!--<div class="banner">
-		<div class="banner_background" style="background-image: url('{% static "/images/banner_background.jpg" %}')"></div>
-		<div class="container fill_height">
-			<div class="row fill_height">
-				<div class="banner_product_image">
-					<img src='{% static "/images/banner_product.png" %}' alt="">
-				</div>
-				<div class="col-lg-5 offset-lg-4 fill_height">
-					<div class="banner_content">
-						<h1 class="banner_text">new era of smartphones</h1>
-						<div class="banner_price"><span>$530</span>$460</div>
-						<div class="banner_product_name">Apple Iphone 6s</div>
-						<div class="button banner_button"><a href="#">Shop Now</a></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>-->
 
 
 	<!-- Deals of the week -->
@@ -252,13 +231,20 @@
 															<a href="./products/{{ product.id }}/">{{ product.name }}</a>
 														</div>
 													</div>
-													<div class="product_extras">
-														<div class="product_color">
-															<input type="radio" checked name="product_color" style="background:#b19c83">
-															<input type="radio" name="product_color" style="background:#000000">
-															<input type="radio" name="product_color" style="background:#999999">
-														</div>
-														<button class="product_cart_button">Add to Cart</button>
+													<div class="product_extras">													
+														{% if product in user.profile.products.all %}
+															<!-- add a button here to see the product -->
+															<a href="{% url 'cart:order_summary' %}">
+																<button class="product_cart_button">You own this</button>
+															</a>
+														{% elif product in current_order_products %}
+															<a href="{% url 'cart:order_summary' %}" class="btn btn-warning">Go to Cart</a>
+														{% else %}
+															<a href="{% url 'cart:add_to_cart' product.id %}" >
+																<button class="product_cart_button">Add to Cart</button>
+															</a>
+														{% endif %}
+														
 													</div>
 												</div>
 												<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -295,12 +281,7 @@
 															<a href="./products/{{newp.id}}/">{{newp.name}}</a>
 														</div>
 													</div>
-													<div class="product_extras">
-														<div class="product_color">
-															<input type="radio" checked name="product_color" style="background:#b19c83">
-															<input type="radio" name="product_color" style="background:#000000">
-															<input type="radio" name="product_color" style="background:#999999">
-														</div>
+													<div class="product_extras">											
 														<button class="product_cart_button">Add to Cart</button>
 													</div>
 												</div>
@@ -338,11 +319,6 @@
 														<a href="./products/{{order.id}}/">{{order.name}}</a>
 													</div></div>
 												<div class="product_extras">
-													<div class="product_color">
-														<input type="radio" checked name="product_color" style="background:#b19c83">
-														<input type="radio" name="product_color" style="background:#000000">
-														<input type="radio" name="product_color" style="background:#999999">
-													</div>
 													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
@@ -481,8 +457,12 @@
 											<img src='{% static "/images/best_1.png" %}' alt="">
 										</div>
 										<div class="bestsellers_content">
-											<div class="bestsellers_category"><a href="#">Headphones</a></div>
-											<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a></div>
+											<div class="bestsellers_category">
+												<a href="#">Headphones</a>
+											</div>
+											<div class="bestsellers_name">
+												<a href="product.html">Xiaomi Redmi Note 4</a>
+											</div>
 											<div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
 											<div class="bestsellers_price discount">$225<span>$300</span></div>
 										</div>
@@ -511,7 +491,7 @@
 										</div>
 										<div class="bestsellers_content">
 											<div class="bestsellers_category"><a href="#">Headphones</a></div>
-											<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a></div>
+											<div class="bestsellers_name"><a href="/products">Xiaomi Redmi Note 4</a></div>
 											<div class="rating_r rating_r_4 bestsellers_rating"><i></i><i></i><i></i><i></i><i></i></div>
 											<div class="bestsellers_price discount">$225<span>$300</span></div>
 										</div>
@@ -531,6 +511,31 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- all products -->
+	<div class="container" style="padding-top: 25px;">
+		<div class="row">
+			{% for p in products %}
+				<div class="col-sm-4">
+					<div class="card mb-4 box-shadow">
+						<img src='{{ p.images.first.url.url }}' width="100%" height="240px"/>		
+						<div class="card-body">
+							<p class="card-text">
+								<a href="/products/{{p.id}}/">{{p.name}}</a>
+							</p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Add To Favorite</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
 
 	<!-- Adverts -->
 
@@ -715,9 +720,9 @@
 							{% for m in marques %}
 							<div class="owl-item">
 								<div class="brands_item d-flex flex-column justify-content-center">
-									<img src="{{m.logo.url}}" alt="{{ m.name }}">
-									<!--<img src='{% static "/images/brands_2.jpg" %}' alt="{{ m.name }}">
-									<h3>{{m.name}}</h3>-->
+									<a href="/marques/{{m.id}}">
+										<img src="{{m.logo.url}}" alt="{{ m.name }}">
+									</a>
 								</div>
 							</div>
 							{% endfor %}

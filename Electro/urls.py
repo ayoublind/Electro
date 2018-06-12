@@ -22,13 +22,14 @@ from django.contrib.auth.views import LoginView
 
 from store import views
 
-
 #import
 from django.conf import settings
-from django.conf.urls.static import static
+from django.conf.urls.static import static 
+
 
 
 urlpatterns = [
+    url(r'^cart/', include('cart.urls', namespace='cart')),
     #page principale de l'application
     path('',views.index),
     #les produits
@@ -51,14 +52,13 @@ urlpatterns = [
     #wishlist
     path('wishlist/', views.wishlist),
     #about us
-    path('about/', views.about),
-
+    path('about/', views.about), 
     # ex: /categorie/1/
     path('categorie/<int:categorie_id>/', views.categorie),
     # ex: /marques/1/ afficher la liste des produit par marques
     path('marques/<int:marque_id>/', views.marques),
     #administrator page
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), 
 ]
 
 

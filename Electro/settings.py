@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
+
+    'cart',
+    
+    #'paypal.standard.ipn',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +71,7 @@ TEMPLATES = [
                 'store.my_context_processors.include_categories',
                 'store.my_context_processors.include_products',
                 'store.my_context_processors.include_marques',
+                'store.my_context_processors.include_panier',
             ],
         },
     },
@@ -130,3 +135,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'.','www','media')
 SITE_ID = 1 
 
+
+#django-paypal settings
+#PAYPAL_RECEIVER_EMAIL = 'ayoub-tec@hotmail.fr'
+#PAYPAL_TEST = True

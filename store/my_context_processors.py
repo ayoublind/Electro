@@ -1,5 +1,5 @@
 
-from .models import Categorie, Product, Marque
+from .models import Categorie, Product, Marque, Panier
 
 
 def include_categories(request):
@@ -12,7 +12,12 @@ def include_products(request):
     products = Product.objects.order_by('-designation')
     return {'products':products}
 
-#all products
+#all marques
 def include_marques(request):
     marques = Marque.objects.order_by('-name')
     return {'marques':marques}
+
+#all panier
+def include_panier(request):
+    panier = Panier.objects.order_by('-id_product')
+    return {'panier':panier}
